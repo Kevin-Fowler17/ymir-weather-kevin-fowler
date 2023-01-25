@@ -27,6 +27,20 @@
                 <input id="addAddress" type="text" class="form-control" placeholder="Place">
                 <button id="submitAddress" class="btn btn-outline-secondary" type="button">Find</button>
             </form>
+
+            <div class="float-center ms-auto">
+                <select class="form-select" id="mapboxStyle">
+                    <option id="mapboxStreets">Mapbox Streets</option>
+                    <option id="mapboxOutdoors">Mapbox Outdoors</option>
+                    <option id="mapboxLight">Mapbox Light</option>
+                    <option id="mapboxDark">Mapbox Dark</option>
+                    <option id="mapboxSatellite">Mapbox Satellite</option>
+                    <option id="mapboxSatelliteStreets" selected>Mapbox Satellite Streets</option>
+                    <option id="mapboxNavigationDay">Mapbox Navigation Day</option>
+                    <option id="mapboxNavigationNight">Mapbox Navigation Night</option>
+                </select>
+            </div>
+
             <div class="d-flex float-right ms-auto">
                 <ul class="mr-3">
                     <li id="currentCity"></li>
@@ -58,6 +72,10 @@
             <span id="tip5" class="tooltip-text"></span>
             <div id="card5" class="card"></div>
         </div>
+        <div class="hover-text forecast_border card col-sm-6 col-md-4 col-lg d-none d-sm-block  d-md-block d-lg-none">
+            <span id="tip6" class="tooltip-text"></span>
+            <div id="card6" class="card"></div>
+        </div>
     </div>
 </div>
 
@@ -66,7 +84,7 @@
 <!-- The HTML element that serves as the Mapbox container-->
 <div id='my-map'></div>
 <pre id="coordinates" class="coordinates"></pre>
-
+<div id="mapbox_style"></div>
 <!--jquery-->
 <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
         crossorigin="anonymous"></script>

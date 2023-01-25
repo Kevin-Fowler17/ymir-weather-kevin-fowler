@@ -1,4 +1,9 @@
 "use strict"
+let mapboxStyle = 'mapbox://styles/mapbox/satellite-streets-v12';
+let globalLat = 0;
+let globalLong = 0;
+let globalZoom = 0;
+
 loadWeatherAndMap();
 
 function loadWeatherAndMap () {
@@ -10,13 +15,13 @@ function updateSearchBoxWeatherAndLocation () {
     geocode(addAddressSelection.value, MAPBOX_API_KEY).then(function(results) {
         console.log(results)
         callOpenWeather(results[1], results[0]);
-        callMapBox(results[1], results[0], 5);
+        callMapBox(results[1], results[0], 18);
     })
 }
 
 function updateDragWeatherAndLocation (lat, lon) {
     callOpenWeather(lat, lon);
-    callMapBox(lat, lon, 5);
+    callMapBox(lat, lon, 18);
 }
 
 
@@ -36,12 +41,14 @@ function callOpenWeather (lat, lon) {
         document.getElementById("tip3").innerHTML = renderWeatherTip(data,16);
         document.getElementById("tip4").innerHTML = renderWeatherTip(data,24);
         document.getElementById("tip5").innerHTML = renderWeatherTip(data,32);
+        document.getElementById("tip6").innerHTML = renderWeatherTip(data,39);
 
         document.getElementById("card1").innerHTML = renderWeather(data, 0);
         document.getElementById("card2").innerHTML = renderWeather(data, 8);
         document.getElementById("card3").innerHTML = renderWeather(data,16);
         document.getElementById("card4").innerHTML = renderWeather(data,24);
         document.getElementById("card5").innerHTML = renderWeather(data,32);
+        document.getElementById("card6").innerHTML = renderWeather(data,39);
 
         addSoundEffect(data)
 
@@ -54,10 +61,14 @@ function callOpenWeather (lat, lon) {
 
 function callMapBox (lat, lon, zoom) {
 
+    globalLat = lat;
+    globalLong = lon;
+    globalZoom = zoom
+
     mapboxgl.accessToken = MAPBOX_API_KEY;
     const map = new mapboxgl.Map({
         container: 'my-map',
-        style: 'mapbox://styles/mapbox/satellite-streets-v12',
+        style: mapboxStyle,
         zoom: zoom,
         center: [lon, lat]
     });
@@ -161,3 +172,31 @@ document.addEventListener("keypress", function(e) {
         updateSearchBoxWeatherAndLocation();
     }
 });
+
+
+function changeMapboxStyle() {
+
+    if (mapboxStyleSelection.value === "Mapbox Streets") {
+        mapboxStyle = 'mapbox://styles/mapbox/streets-v12';
+    } else if (mapboxStyleSelection.value === "Mapbox Outdoors") {
+        mapboxStyle = 'mapbox://styles/mapbox/outdoors-v12';
+    } else if (mapboxStyleSelection.value === "Mapbox Light") {
+        mapboxStyle = 'mapbox://styles/mapbox/light-v11';
+    } else if (mapboxStyleSelection.value === "Mapbox Dark") {
+        mapboxStyle = 'mapbox://styles/mapbox/dark-v11';
+    } else if (mapboxStyleSelection.value === "Mapbox Satellite") {
+        mapboxStyle = 'mapbox://styles/mapbox/satellite-v9';
+    } else if (mapboxStyleSelection.value === "Mapbox Navigation Day") {
+        mapboxStyle = 'mapbox://styles/mapbox/navigation-day-v1';
+    } else if (mapboxStyleSelection.value === "Mapbox Navigation Night") {
+        mapboxStyle = 'mapbox://styles/mapbox/navigation-night-v1';
+    } else {
+        mapboxStyle = 'mapbox://styles/mapbox/satellite-streets-v12';
+    }
+
+    callMapBox(globalLat, globalLong, globalZoom);
+}
+
+let mapboxStyleSelection = document.getElementById("mapboxStyle");
+mapboxStyleSelection.addEventListener("change", changeMapboxStyle);
+
