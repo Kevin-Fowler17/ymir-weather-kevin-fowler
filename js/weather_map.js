@@ -4,6 +4,8 @@ let globalLat = 0;
 let globalLong = 0;
 let globalZoom = 0;
 
+let play = function(){document.getElementById("audio").play()}
+
 loadWeatherAndMap();
 
 function loadWeatherAndMap () {
