@@ -1,0 +1,99 @@
+* {
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
+#my-title {
+    margin-left: 1em;
+}
+
+#submitAddress {
+    color: white;
+    border-color: white;
+}
+
+#currentCity {
+    color: white;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+body {
+    background-color: #00A7E1;
+}
+
+.card {
+    background-color: #00A7E1;
+    color: white;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.forecast_border {
+    border: .5px solid #3B94D9;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+#my-map {
+    /* the width and height may be set to any size */
+    width: 100%;
+    height: 445px;
+    align-content: center;
+    border-bottom: 1px solid #3B94D9;
+    border-right: 1px solid #3B94D9;
+    border-left: 1px solid #3B94D9;
+}
+
+.list-group-item {
+    border: none;
+    background-color: #00A7E1;
+    color: white;
+    padding: 0;
+}
+
+.coordinates {
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    position: absolute;
+    bottom: 40px;
+    left: 10px;
+    padding: 5px 10px;
+    margin: 0;
+    font-size: 11px;
+    line-height: 18px;
+    border-radius: 3px;
+    display: none;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    position: absolute;
+    z-index: 1;
+    width: 175px;
+    color: white;
+    font-size: 12px;
+    background-color: #192733;
+    border-radius: 10px;
+    padding: 10px 15px 10px 15px;
+}
+
+.hover-text:hover .tooltip-text {
+    visibility: visible;
+    top: 100%;
+    left: 50%;
+    margin-left: -85px;
+}
+
+.hover-text {
+    position: relative;
+    display: inline-block;
+    /*margin: 40px;*/
+    /*font-family: Avenir;*/
+    text-align: center;
+}
+
