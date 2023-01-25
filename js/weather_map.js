@@ -163,19 +163,6 @@ function addSoundEffect(data) {
 
 
 
-const addAddressSelection = document.querySelector('#addAddress');
-let submitAddress = document.getElementById("submitAddress");
-
-submitAddress.addEventListener('click', updateSearchBoxWeatherAndLocation);
-
-document.addEventListener("keypress", function(e) {
-    if (e.key === "Enter") {
-        e.preventDefault()
-        updateSearchBoxWeatherAndLocation();
-    }
-});
-
-
 function changeMapboxStyle() {
 
     if (mapboxStyleSelection.value === "Mapbox Streets") {
@@ -198,6 +185,21 @@ function changeMapboxStyle() {
 
     callMapBox(globalLat, globalLong, globalZoom);
 }
+
+
+
+const addAddressSelection = document.querySelector('#addAddress');
+let submitAddress = document.getElementById("submitAddress");
+
+submitAddress.addEventListener('click', updateSearchBoxWeatherAndLocation);
+
+document.addEventListener("keypress", function(e) {
+    if (e.key === "Enter") {
+        e.preventDefault()
+        updateSearchBoxWeatherAndLocation();
+    }
+});
+
 
 let mapboxStyleSelection = document.getElementById("mapboxStyle");
 mapboxStyleSelection.addEventListener("change", changeMapboxStyle);
